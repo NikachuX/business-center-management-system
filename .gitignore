@@ -70,3 +70,6 @@ out/
 .env.local
 *.local
 secrets/
+
+# Временные файлы Microsoft Word
+~$*

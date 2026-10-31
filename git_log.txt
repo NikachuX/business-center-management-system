@@ -1,0 +1,6 @@
+f2f2b3b 2026-10-06 15:17:05 +0300 Nikita Boriskin Merge branch 'main' of https://github.com/NikachuX/business-center-management-system
+bafaaf8 2026-10-06 15:15:34 +0300 Nikita Boriskin Отчет: Среда разработки + перевод
+f129342 2026-10-05 19:24:31 +0300 Nikita Boriskin Delete Отчет/~$Отчет.docx
+f22445c 2026-10-05 15:45:07 +0300 Nikita Boriskin Отчет: Описание основного бизнес-процесса
+d71411c 2026-10-04 22:57:54 +0300 Nikita Boriskin Отчет: Введение + Предметная область
+6b4c7b1 2026-10-01 13:52:31 +0300 Nikita Boriskin Добавление README и gitignore
