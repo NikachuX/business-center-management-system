@@ -1,0 +1,432 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="er-logical" name="Логическая модель данных">
+    <mxGraphModel dx="1030" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1720" pageHeight="1030" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tenant" parent="1" style="swimlane;html=1;startSize=34;horizontal=1;rounded=0;collapsible=0;fillColor=#dae8fc;swimlaneFillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#000000;fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;container=1;" value="tenant" vertex="1">
+          <mxGeometry height="202" width="275" x="40" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_f0" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=1;" value="id" vertex="1">
+          <mxGeometry height="28" width="232" x="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_f1" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="name" vertex="1">
+          <mxGeometry height="28" width="232" x="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_f2" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="inn" vertex="1">
+          <mxGeometry height="28" width="232" x="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_f3" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="contact_person" vertex="1">
+          <mxGeometry height="28" width="232" x="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_f4" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="phone" vertex="1">
+          <mxGeometry height="28" width="232" x="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_f5" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="email" vertex="1">
+          <mxGeometry height="28" width="232" x="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_key_0" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="PK" vertex="1">
+          <mxGeometry height="28" width="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_key_1" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_key_2" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_key_3" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_key_4" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_key_5" parent="tenant" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="tenant_keydivider" edge="1" parent="tenant" style="endArrow=none;startArrow=none;strokeColor=#6c8ebf;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="43" y="34" as="sourcePoint" />
+            <mxPoint x="43" y="202" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tenant_pkdivider" edge="1" parent="tenant" style="endArrow=none;startArrow=none;strokeColor=#6c8ebf;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="62" as="sourcePoint" />
+            <mxPoint x="275" y="62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="application" parent="1" style="swimlane;html=1;startSize=34;horizontal=1;rounded=0;collapsible=0;fillColor=#d5e8d4;swimlaneFillColor=#ffffff;strokeColor=#82b366;fontColor=#000000;fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;container=1;" value="application" vertex="1">
+          <mxGeometry height="342" width="305" x="420" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f0" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=1;" value="id" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f1" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="tenant_id" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f2" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="created_at" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f3" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="activity_type" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f4" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="min_area" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f5" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="max_area" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f6" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="preferred_floor" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="202" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f7" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="max_monthly_budget" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f8" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="rental_start_date" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="258" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f9" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="rental_end_date" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="application_f10" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="status" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="314" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_0" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="PK" vertex="1">
+          <mxGeometry height="28" width="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_1" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="FK" vertex="1">
+          <mxGeometry height="28" width="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_2" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_3" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_4" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_5" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_6" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="202" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_7" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_8" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="258" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_9" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="application_key_10" parent="application" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="314" as="geometry" />
+        </mxCell>
+        <mxCell id="application_keydivider" edge="1" parent="application" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="43" y="34" as="sourcePoint" />
+            <mxPoint x="43" y="342" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="application_pkdivider" edge="1" parent="application" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="62" as="sourcePoint" />
+            <mxPoint x="305" y="62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reservation" parent="1" style="swimlane;html=1;startSize=34;horizontal=1;rounded=0;collapsible=0;fillColor=#d5e8d4;swimlaneFillColor=#ffffff;strokeColor=#82b366;fontColor=#000000;fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;container=1;" value="reservation" vertex="1">
+          <mxGeometry height="258" width="300" x="865" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_f0" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=1;" value="id" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_f1" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="application_id" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_f2" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="premise_id" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_f3" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="created_at" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_f4" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="rental_start_date" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_f5" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="rental_end_date" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_f6" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="expires_at" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="202" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_f7" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="status" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_key_0" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="PK" vertex="1">
+          <mxGeometry height="28" width="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_key_1" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="FK" vertex="1">
+          <mxGeometry height="28" width="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_key_2" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="FK" vertex="1">
+          <mxGeometry height="28" width="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_key_3" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_key_4" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_key_5" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_key_6" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="202" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_key_7" parent="reservation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="reservation_keydivider" edge="1" parent="reservation" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="43" y="34" as="sourcePoint" />
+            <mxPoint x="43" y="258" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reservation_pkdivider" edge="1" parent="reservation" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="62" as="sourcePoint" />
+            <mxPoint x="300" y="62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="premise" parent="1" style="swimlane;html=1;startSize=34;horizontal=1;rounded=0;collapsible=0;fillColor=#dae8fc;swimlaneFillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#000000;fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;container=1;" value="premise" vertex="1">
+          <mxGeometry height="202" width="300" x="1305" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_f0" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=1;" value="id" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_f1" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="number" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_f2" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="floor" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_f3" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="area" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_f4" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="base_monthly_rate" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_f5" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="operational_status" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_key_0" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="PK" vertex="1">
+          <mxGeometry height="28" width="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_key_1" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_key_2" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_key_3" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_key_4" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_key_5" parent="premise" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="premise_keydivider" edge="1" parent="premise" style="endArrow=none;startArrow=none;strokeColor=#6c8ebf;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="43" y="34" as="sourcePoint" />
+            <mxPoint x="43" y="202" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="premise_pkdivider" edge="1" parent="premise" style="endArrow=none;startArrow=none;strokeColor=#6c8ebf;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="62" as="sourcePoint" />
+            <mxPoint x="300" y="62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="commercial_offer" parent="1" style="swimlane;html=1;startSize=34;horizontal=1;rounded=0;collapsible=0;fillColor=#d5e8d4;swimlaneFillColor=#ffffff;strokeColor=#82b366;fontColor=#000000;fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;container=1;" value="commercial_offer" vertex="1">
+          <mxGeometry height="174" width="305" x="420" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_f0" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=1;" value="id" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_f1" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="application_id" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_f2" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="created_at" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_f3" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="valid_until" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_f4" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="status" vertex="1">
+          <mxGeometry height="28" width="262" x="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_key_0" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="PK" vertex="1">
+          <mxGeometry height="28" width="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_key_1" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="FK" vertex="1">
+          <mxGeometry height="28" width="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_key_2" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_key_3" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_key_4" parent="commercial_offer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_keydivider" edge="1" parent="commercial_offer" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="43" y="34" as="sourcePoint" />
+            <mxPoint x="43" y="174" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="commercial_offer_pkdivider" edge="1" parent="commercial_offer" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="62" as="sourcePoint" />
+            <mxPoint x="305" y="62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="commercial_offer_item" parent="1" style="swimlane;html=1;startSize=34;horizontal=1;rounded=0;collapsible=0;fillColor=#d5e8d4;swimlaneFillColor=#ffffff;strokeColor=#82b366;fontColor=#000000;fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;container=1;" value="commercial_offer_item" vertex="1">
+          <mxGeometry height="202" width="300" x="865" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_f0" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=1;" value="id" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_f1" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="commercial_offer_id" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_f2" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="premise_id" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_f3" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="monthly_rate" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_f4" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="rental_start_date" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_f5" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="rental_end_date" vertex="1">
+          <mxGeometry height="28" width="257" x="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_key_0" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="PK" vertex="1">
+          <mxGeometry height="28" width="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_key_1" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="FK" vertex="1">
+          <mxGeometry height="28" width="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_key_2" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="FK" vertex="1">
+          <mxGeometry height="28" width="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_key_3" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_key_4" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_key_5" parent="commercial_offer_item" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="commercial_offer_item_keydivider" edge="1" parent="commercial_offer_item" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="43" y="34" as="sourcePoint" />
+            <mxPoint x="43" y="202" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="commercial_offer_item_pkdivider" edge="1" parent="commercial_offer_item" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="62" as="sourcePoint" />
+            <mxPoint x="300" y="62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lease_contract" parent="1" style="swimlane;html=1;startSize=34;horizontal=1;rounded=0;collapsible=0;fillColor=#d5e8d4;swimlaneFillColor=#ffffff;strokeColor=#82b366;fontColor=#000000;fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;container=1;" value="lease_contract" vertex="1">
+          <mxGeometry height="202" width="355" x="1305" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_f0" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=1;" value="id" vertex="1">
+          <mxGeometry height="28" width="312" x="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_f1" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="commercial_offer_item_id" vertex="1">
+          <mxGeometry height="28" width="312" x="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_f2" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="number" vertex="1">
+          <mxGeometry height="28" width="312" x="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_f3" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="created_at" vertex="1">
+          <mxGeometry height="28" width="312" x="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_f4" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="signed_at" vertex="1">
+          <mxGeometry height="28" width="312" x="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_f5" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Arial;fontSize=14;fontStyle=0;" value="status" vertex="1">
+          <mxGeometry height="28" width="312" x="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_key_0" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="PK" vertex="1">
+          <mxGeometry height="28" width="43" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_key_1" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="FK" vertex="1">
+          <mxGeometry height="28" width="43" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_key_2" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_key_3" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_key_4" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_key_5" parent="lease_contract" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;" value="" vertex="1">
+          <mxGeometry height="28" width="43" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="lease_contract_keydivider" edge="1" parent="lease_contract" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="43" y="34" as="sourcePoint" />
+            <mxPoint x="43" y="202" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lease_contract_pkdivider" edge="1" parent="lease_contract" style="endArrow=none;startArrow=none;strokeColor=#82b366;strokeWidth=0.7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="62" as="sourcePoint" />
+            <mxPoint x="355" y="62" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_tenant_application" edge="1" parent="1" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;jettySize=25;orthogonalLoop=1;startArrow=ERmandOne;startFill=0;startSize=15;endArrow=ERzeroToMany;endFill=0;endSize=15;strokeColor=#808080;strokeWidth=1;fontFamily=Arial;fontSize=13;labelBackgroundColor=#ffffff;exitX=1;exitY=0.4;entryX=0;entryY=0.246;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="215.99999999999994" as="sourcePoint" />
+            <mxPoint x="420" y="149.33200000000005" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_application_reservation" edge="1" parent="1" source="application" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;jettySize=25;orthogonalLoop=1;startArrow=ERmandOne;startFill=0;startSize=15;endArrow=ERzeroToMany;endFill=0;endSize=15;strokeColor=#808080;strokeWidth=1;fontFamily=Arial;fontSize=13;labelBackgroundColor=#ffffff;exitX=1;exitY=0.55;entryX=0;entryY=0.715;" target="reservation" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_premise_reservation" edge="1" parent="1" source="premise" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;jettySize=25;orthogonalLoop=1;startArrow=ERmandOne;startFill=0;startSize=15;endArrow=ERzeroToMany;endFill=0;endSize=15;strokeColor=#808080;strokeWidth=1;fontFamily=Arial;fontSize=13;labelBackgroundColor=#ffffff;exitX=0;exitY=0.4;entryX=1;entryY=0.32;" target="reservation" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_application_offer" edge="1" parent="1" source="application" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=25;orthogonalLoop=1;startArrow=ERmandOne;startFill=0;startSize=15;endArrow=ERzeroToMany;endFill=0;endSize=15;strokeColor=#808080;strokeWidth=1;fontFamily=Arial;fontSize=13;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="commercial_offer" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_offer_item" edge="1" parent="1" source="commercial_offer" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;jettySize=25;orthogonalLoop=1;startArrow=ERmandOne;startFill=0;startSize=15;endArrow=ERmany;endFill=0;endSize=15;strokeColor=#808080;strokeWidth=1;fontFamily=Arial;fontSize=13;labelBackgroundColor=#ffffff;exitX=1;exitY=0.55;entryX=0;entryY=0.48;" target="commercial_offer_item" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_premise_item" edge="1" parent="1" source="premise" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=25;orthogonalLoop=1;startArrow=ERmandOne;startFill=0;startSize=15;endArrow=ERzeroToMany;endFill=0;endSize=15;strokeColor=#808080;strokeWidth=1;fontFamily=Arial;fontSize=13;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="commercial_offer_item" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1455" y="530" />
+              <mxPoint x="1015" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_item_contract" edge="1" parent="1" source="commercial_offer_item" style="edgeStyle=entityRelationEdgeStyle;rounded=0;html=1;jettySize=25;orthogonalLoop=1;startArrow=ERmandOne;startFill=0;startSize=15;endArrow=ERzeroToOne;endFill=0;endSize=15;strokeColor=#808080;strokeWidth=1;fontFamily=Arial;fontSize=13;labelBackgroundColor=#ffffff;exitX=1;exitY=0.75;entryX=0;entryY=0.75;" target="lease_contract" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
