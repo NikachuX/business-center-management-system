@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:storm="http://storm.bpmn2.ru/ns" id="Definitions_Lease" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Claude" exporterVersion="1.1">
+  <bpmn:collaboration id="Collaboration_Lease">
+    <bpmn:participant id="Participant_Tenant" name="Арендатор" />
+    <bpmn:participant id="Participant_BC" name="Бизнес-центр (арендодатель)" processRef="Process_Lease" />
+    <bpmn:messageFlow id="MF01" sourceRef="Participant_Tenant" targetRef="Start_Request" />
+    <bpmn:messageFlow id="MF02" sourceRef="Task_SendOffer" targetRef="Participant_Tenant" />
+    <bpmn:messageFlow id="MF03" sourceRef="Participant_Tenant" targetRef="Catch_OfferReply" />
+    <bpmn:messageFlow id="MF04" sourceRef="Task_NotifyRefusal" targetRef="Participant_Tenant" />
+    <bpmn:messageFlow id="MF05" sourceRef="Task_SendContract" targetRef="Participant_Tenant" />
+    <bpmn:messageFlow id="MF06" sourceRef="Participant_Tenant" targetRef="Catch_ContractReply" />
+    <bpmn:messageFlow id="MF07" sourceRef="Task_SendForSign" targetRef="Participant_Tenant" />
+    <bpmn:messageFlow id="MF08" sourceRef="Participant_Tenant" targetRef="Catch_Signed" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_Lease" name="Обработка заявки арендатора и заключение договора аренды коммерческого помещения" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_Manager" name="Менеджер по аренде">
+        <bpmn:flowNodeRef>Start_Request</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_RegisterRequest</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_MergeSelect</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SelectPremises</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_PremisesFound</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_NotifyRefusal</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_NoPremises</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_PrepareOffer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SendOffer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Catch_OfferReply</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_TenantDecision</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CloseRequest</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Closed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_MergeContract</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SendContract</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Catch_ContractReply</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_TenantRemarks</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_AgreeRemarks</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SendForSign</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Catch_Signed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_UpdateRecords</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Done</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_01xfho1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_06icvkw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1i5kgd1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Lawyer" name="Юрист">
+        <bpmn:flowNodeRef>Task_CheckTenant</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_TenantOk</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Rejected</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CheckContract</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_ContractOk</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Director" name="Управляющий бизнес-центра">
+        <bpmn:flowNodeRef>Task_ApproveContract</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SignLandlord</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start_Request" name="Получена заявка арендатора">
+      <bpmn:outgoing>F01</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="Start_Request_msg" />
+    </bpmn:startEvent>
+    <bpmn:task id="Task_RegisterRequest" name="Зарегистрировать заявку">
+      <bpmn:incoming>F01</bpmn:incoming>
+      <bpmn:outgoing>F02</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="Out_Request">
+        <bpmn:targetRef>DOR_Request</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Task_CheckTenant" name="Проверить арендатора">
+      <bpmn:incoming>F02</bpmn:incoming>
+      <bpmn:outgoing>F03</bpmn:outgoing>
+      <bpmn:dataInputAssociation id="In_Request">
+        <bpmn:sourceRef>DOR_Request</bpmn:sourceRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gw_TenantOk" name="Арендатор прошёл проверку?">
+      <bpmn:incoming>F03</bpmn:incoming>
+      <bpmn:outgoing>F04</bpmn:outgoing>
+      <bpmn:outgoing>F05</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_Rejected" name="Заявка отклонена">
+      <bpmn:incoming>F05</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gw_MergeSelect">
+      <bpmn:incoming>F04</bpmn:incoming>
+      <bpmn:incoming>F17</bpmn:incoming>
+      <bpmn:outgoing>F06</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_SelectPremises" name="Подобрать свободные помещения">
+      <bpmn:incoming>F06</bpmn:incoming>
+      <bpmn:outgoing>F07</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gw_PremisesFound" name="Есть подходящие помещения?">
+      <bpmn:incoming>F07</bpmn:incoming>
+      <bpmn:outgoing>F08</bpmn:outgoing>
+      <bpmn:outgoing>F09</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sendTask id="Task_NotifyRefusal" name="Сообщить арендатору об отказе">
+      <bpmn:incoming>F09</bpmn:incoming>
+      <bpmn:outgoing>F10</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="End_NoPremises" name="Заявка закрыта: нет помещений">
+      <bpmn:incoming>F10</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Task_PrepareOffer" name="Сформировать коммерческое предложение">
+      <bpmn:incoming>Flow_0vl64x9</bpmn:incoming>
+      <bpmn:outgoing>F12</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="Out_Offer">
+        <bpmn:targetRef>DOR_Offer</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:sendTask id="Task_SendOffer" name="Направить коммерческое предложение арендатору">
+      <bpmn:incoming>F12</bpmn:incoming>
+      <bpmn:outgoing>F13</bpmn:outgoing>
+      <bpmn:dataInputAssociation id="In_Offer">
+        <bpmn:sourceRef>DOR_Offer</bpmn:sourceRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:sendTask>
+    <bpmn:intermediateCatchEvent id="Catch_OfferReply" name="Получен ответ арендатора">
+      <bpmn:incoming>F13</bpmn:incoming>
+      <bpmn:outgoing>F14</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="Catch_OfferReply_msg" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="Gw_TenantDecision" name="Решение арендатора?">
+      <bpmn:incoming>F14</bpmn:incoming>
+      <bpmn:outgoing>F15</bpmn:outgoing>
+      <bpmn:outgoing>F16</bpmn:outgoing>
+      <bpmn:outgoing>F17</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_CloseRequest" name="Закрыть заявку и снять резерв">
+      <bpmn:incoming>F16</bpmn:incoming>
+      <bpmn:outgoing>F18</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="End_Closed" name="Заявка закрыта: арендатор отказался">
+      <bpmn:incoming>F18</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gw_MergeContract">
+      <bpmn:incoming>F15</bpmn:incoming>
+      <bpmn:incoming>Flow_03nsu3e</bpmn:incoming>
+      <bpmn:outgoing>Flow_1e6bdv4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_CheckContract" name="Проверить проект договора">
+      <bpmn:incoming>Flow_0ltm3i2</bpmn:incoming>
+      <bpmn:outgoing>F21</bpmn:outgoing>
+      <bpmn:dataInputAssociation id="In_Contract">
+        <bpmn:sourceRef>DOR_Contract</bpmn:sourceRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gw_ContractOk" name="Замечания юриста есть?">
+      <bpmn:incoming>F21</bpmn:incoming>
+      <bpmn:outgoing>F23</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0cjmdw9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_ApproveContract" name="Согласовать договор">
+      <bpmn:incoming>F23</bpmn:incoming>
+      <bpmn:outgoing>F24</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sendTask id="Task_SendContract" name="Направить проект договора арендатору">
+      <bpmn:incoming>F24</bpmn:incoming>
+      <bpmn:outgoing>F25</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:intermediateCatchEvent id="Catch_ContractReply" name="Получен ответ арендатора по договору">
+      <bpmn:incoming>F25</bpmn:incoming>
+      <bpmn:outgoing>F26</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="Catch_ContractReply_msg" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="Gw_TenantRemarks" name="Есть замечания арендатора?">
+      <bpmn:incoming>F26</bpmn:incoming>
+      <bpmn:outgoing>F27</bpmn:outgoing>
+      <bpmn:outgoing>F28</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_AgreeRemarks" name="Согласовать замечания арендатора">
+      <bpmn:incoming>F27</bpmn:incoming>
+      <bpmn:outgoing>F29</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_SignLandlord" name="Подписать договор от имени арендодателя">
+      <bpmn:incoming>F28</bpmn:incoming>
+      <bpmn:outgoing>F30</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sendTask id="Task_SendForSign" name="Передать договор арендатору на подписание">
+      <bpmn:incoming>F30</bpmn:incoming>
+      <bpmn:outgoing>F31</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:intermediateCatchEvent id="Catch_Signed" name="Получен подписанный арендатором договор">
+      <bpmn:incoming>F31</bpmn:incoming>
+      <bpmn:outgoing>F32</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="Catch_Signed_msg" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:task id="Task_UpdateRecords" name="Актуализировать сведения о помещении и условиях аренды">
+      <bpmn:incoming>F32</bpmn:incoming>
+      <bpmn:outgoing>F33</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="Out_Records">
+        <bpmn:targetRef>DOR_Records</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:endEvent id="End_Done" name="Договор аренды заключён">
+      <bpmn:incoming>F33</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F01" sourceRef="Start_Request" targetRef="Task_RegisterRequest" />
+    <bpmn:sequenceFlow id="F02" sourceRef="Task_RegisterRequest" targetRef="Task_CheckTenant" />
+    <bpmn:sequenceFlow id="F03" sourceRef="Task_CheckTenant" targetRef="Gw_TenantOk" />
+    <bpmn:sequenceFlow id="F04" name="Да" sourceRef="Gw_TenantOk" targetRef="Gw_MergeSelect" />
+    <bpmn:sequenceFlow id="F05" name="Нет" sourceRef="Gw_TenantOk" targetRef="End_Rejected" />
+    <bpmn:sequenceFlow id="F06" sourceRef="Gw_MergeSelect" targetRef="Task_SelectPremises" />
+    <bpmn:sequenceFlow id="F07" sourceRef="Task_SelectPremises" targetRef="Gw_PremisesFound" />
+    <bpmn:sequenceFlow id="F08" name="Да" sourceRef="Gw_PremisesFound" targetRef="Activity_06icvkw" />
+    <bpmn:sequenceFlow id="F09" name="Нет" sourceRef="Gw_PremisesFound" targetRef="Task_NotifyRefusal" />
+    <bpmn:sequenceFlow id="F10" sourceRef="Task_NotifyRefusal" targetRef="End_NoPremises" />
+    <bpmn:sequenceFlow id="F12" sourceRef="Task_PrepareOffer" targetRef="Task_SendOffer" />
+    <bpmn:sequenceFlow id="F13" sourceRef="Task_SendOffer" targetRef="Catch_OfferReply" />
+    <bpmn:sequenceFlow id="F14" sourceRef="Catch_OfferReply" targetRef="Gw_TenantDecision" />
+    <bpmn:sequenceFlow id="F15" name="Согласен" sourceRef="Gw_TenantDecision" targetRef="Gw_MergeContract" />
+    <bpmn:sequenceFlow id="F16" name="Отказ" sourceRef="Gw_TenantDecision" targetRef="Task_CloseRequest" />
+    <bpmn:sequenceFlow id="F17" name="Условия не устраивают – уточнить требования" sourceRef="Gw_TenantDecision" targetRef="Gw_MergeSelect" storm:LabelWidth="164" storm:LabelHeight="48" />
+    <bpmn:sequenceFlow id="F18" sourceRef="Task_CloseRequest" targetRef="End_Closed" />
+    <bpmn:sequenceFlow id="F21" sourceRef="Task_CheckContract" targetRef="Gw_ContractOk" />
+    <bpmn:sequenceFlow id="F23" name="Нет" sourceRef="Gw_ContractOk" targetRef="Task_ApproveContract" />
+    <bpmn:sequenceFlow id="F24" sourceRef="Task_ApproveContract" targetRef="Task_SendContract" />
+    <bpmn:sequenceFlow id="F25" sourceRef="Task_SendContract" targetRef="Catch_ContractReply" />
+    <bpmn:sequenceFlow id="F26" sourceRef="Catch_ContractReply" targetRef="Gw_TenantRemarks" />
+    <bpmn:sequenceFlow id="F27" name="Да" sourceRef="Gw_TenantRemarks" targetRef="Task_AgreeRemarks" />
+    <bpmn:sequenceFlow id="F28" name="Нет" sourceRef="Gw_TenantRemarks" targetRef="Task_SignLandlord" />
+    <bpmn:sequenceFlow id="F29" sourceRef="Task_AgreeRemarks" targetRef="Gateway_01xfho1" />
+    <bpmn:sequenceFlow id="F30" sourceRef="Task_SignLandlord" targetRef="Task_SendForSign" />
+    <bpmn:sequenceFlow id="F31" sourceRef="Task_SendForSign" targetRef="Catch_Signed" />
+    <bpmn:sequenceFlow id="F32" sourceRef="Catch_Signed" targetRef="Task_UpdateRecords" />
+    <bpmn:sequenceFlow id="F33" sourceRef="Task_UpdateRecords" targetRef="End_Done" />
+    <bpmn:dataObject id="DO_Request" />
+    <bpmn:dataObjectReference id="DOR_Request" name="Заявка арендатора" dataObjectRef="DO_Request" />
+    <bpmn:dataObject id="DO_Offer" />
+    <bpmn:dataObjectReference id="DOR_Offer" name="Коммерческое предложение" dataObjectRef="DO_Offer" />
+    <bpmn:dataObject id="DO_Contract" />
+    <bpmn:dataObjectReference id="DOR_Contract" name="Проект договора" dataObjectRef="DO_Contract" />
+    <bpmn:dataObject id="DO_Records" />
+    <bpmn:dataObjectReference id="DOR_Records" name="Сведения об аренде" dataObjectRef="DO_Records" />
+    <bpmn:exclusiveGateway id="Gateway_01xfho1">
+      <bpmn:incoming>F29</bpmn:incoming>
+      <bpmn:incoming>Flow_0cjmdw9</bpmn:incoming>
+      <bpmn:outgoing>Flow_03nsu3e</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0cjmdw9" name="Да" sourceRef="Gw_ContractOk" targetRef="Gateway_01xfho1" />
+    <bpmn:sequenceFlow id="Flow_03nsu3e" sourceRef="Gateway_01xfho1" targetRef="Gw_MergeContract" />
+    <bpmn:sequenceFlow id="Flow_0vl64x9" sourceRef="Activity_06icvkw" targetRef="Task_PrepareOffer" />
+    <bpmn:task id="Activity_06icvkw" name="Зарезервировать помещение">
+      <bpmn:incoming>F08</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vl64x9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1i5kgd1" name="Подготовить проект договора">
+      <bpmn:incoming>Flow_1e6bdv4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ltm3i2</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_19lav4l">
+        <bpmn:targetRef>DOR_Contract</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1e6bdv4" sourceRef="Gw_MergeContract" targetRef="Activity_1i5kgd1" />
+    <bpmn:sequenceFlow id="Flow_0ltm3i2" sourceRef="Activity_1i5kgd1" targetRef="Task_CheckContract" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_Lease">
+      <bpmndi:BPMNShape id="Participant_Tenant_di" bpmnElement="Participant_Tenant" isHorizontal="true">
+        <dc:Bounds x="160" y="60" width="3740" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_BC_di" bpmnElement="Participant_BC" isHorizontal="true">
+        <dc:Bounds x="160" y="220" width="3740" height="800" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Director_di" bpmnElement="Lane_Director" isHorizontal="true">
+        <dc:Bounds x="190" y="820" width="3710" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Lawyer_di" bpmnElement="Lane_Lawyer" isHorizontal="true">
+        <dc:Bounds x="190" y="620" width="3710" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Manager_di" bpmnElement="Lane_Manager" isHorizontal="true">
+        <dc:Bounds x="190" y="220" width="3710" height="400" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_Request_di" bpmnElement="Start_Request">
+        <dc:Bounds x="242" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="200" y="422" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_RegisterRequest_di" bpmnElement="Task_RegisterRequest" bioc:stroke="#d79b00" bioc:fill="#fff2cc">
+        <dc:Bounds x="340" y="360" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CheckTenant_di" bpmnElement="Task_CheckTenant">
+        <dc:Bounds x="500" y="680" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gw_TenantOk_di" bpmnElement="Gw_TenantOk" isMarkerVisible="true">
+        <dc:Bounds x="675" y="695" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="640" y="748" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Rejected_di" bpmnElement="End_Rejected">
+        <dc:Bounds x="790" y="702" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="748" y="742" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gw_MergeSelect_di" bpmnElement="Gw_MergeSelect" isMarkerVisible="true">
+        <dc:Bounds x="775" y="375" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SelectPremises_di" bpmnElement="Task_SelectPremises" bioc:stroke="#d79b00" bioc:fill="#fff2cc">
+        <dc:Bounds x="880" y="360" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gw_PremisesFound_di" bpmnElement="Gw_PremisesFound" isMarkerVisible="true">
+        <dc:Bounds x="1075" y="375" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1035" y="430" width="130" height="34" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_NotifyRefusal_di" bpmnElement="Task_NotifyRefusal">
+        <dc:Bounds x="1040" y="230" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_NoPremises_di" bpmnElement="End_NoPremises">
+        <dc:Bounds x="1212" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1170" y="292" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_PrepareOffer_di" bpmnElement="Task_PrepareOffer" bioc:stroke="#d79b00" bioc:fill="#fff2cc">
+        <dc:Bounds x="1340" y="360" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SendOffer_di" bpmnElement="Task_SendOffer">
+        <dc:Bounds x="1500" y="360" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Catch_OfferReply_di" bpmnElement="Catch_OfferReply">
+        <dc:Bounds x="1682" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1640" y="422" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gw_TenantDecision_di" bpmnElement="Gw_TenantDecision" isMarkerVisible="true">
+        <dc:Bounds x="1775" y="375" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1818" y="430" width="64" height="24" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CloseRequest_di" bpmnElement="Task_CloseRequest">
+        <dc:Bounds x="1740" y="230" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Closed_di" bpmnElement="End_Closed">
+        <dc:Bounds x="1912" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1870" y="292" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gw_MergeContract_di" bpmnElement="Gw_MergeContract" isMarkerVisible="true">
+        <dc:Bounds x="1915" y="375" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CheckContract_di" bpmnElement="Task_CheckContract">
+        <dc:Bounds x="2200" y="680" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gw_ContractOk_di" bpmnElement="Gw_ContractOk" isMarkerVisible="true">
+        <dc:Bounds x="2395" y="695" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2355" y="748" width="130" height="34" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ApproveContract_di" bpmnElement="Task_ApproveContract">
+        <dc:Bounds x="2500" y="880" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SendContract_di" bpmnElement="Task_SendContract">
+        <dc:Bounds x="2660" y="360" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Catch_ContractReply_di" bpmnElement="Catch_ContractReply">
+        <dc:Bounds x="2842" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2800" y="422" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gw_TenantRemarks_di" bpmnElement="Gw_TenantRemarks" isMarkerVisible="true">
+        <dc:Bounds x="2935" y="375" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2895" y="325" width="130" height="34" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_AgreeRemarks_di" bpmnElement="Task_AgreeRemarks">
+        <dc:Bounds x="2900" y="500" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SignLandlord_di" bpmnElement="Task_SignLandlord">
+        <dc:Bounds x="3100" y="880" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SendForSign_di" bpmnElement="Task_SendForSign">
+        <dc:Bounds x="3280" y="360" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Catch_Signed_di" bpmnElement="Catch_Signed">
+        <dc:Bounds x="3462" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3420" y="422" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_UpdateRecords_di" bpmnElement="Task_UpdateRecords" bioc:stroke="#d79b00" bioc:fill="#fff2cc">
+        <dc:Bounds x="3570" y="360" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Done_di" bpmnElement="End_Done">
+        <dc:Bounds x="3772" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3730" y="422" width="120" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DOR_Request_di" bpmnElement="DOR_Request">
+        <dc:Bounds x="382" y="465" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DOR_Offer_di" bpmnElement="DOR_Offer">
+        <dc:Bounds x="1382" y="465" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DOR_Contract_di" bpmnElement="DOR_Contract">
+        <dc:Bounds x="2062" y="465" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DOR_Records_di" bpmnElement="DOR_Records">
+        <dc:Bounds x="3622" y="465" width="36" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_01xfho1_di" bpmnElement="Gateway_01xfho1" isMarkerVisible="true">
+        <dc:Bounds x="2395" y="575" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0w6e77r" bpmnElement="Activity_06icvkw" bioc:stroke="#d79b00" bioc:fill="#fff2cc">
+        <dc:Bounds x="1180" y="360" width="120" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0jcv5ui" bpmnElement="Activity_1i5kgd1">
+        <dc:Bounds x="2020" y="360" width="120" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F01_di" bpmnElement="F01">
+        <di:waypoint x="278" y="400" />
+        <di:waypoint x="340" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F02_di" bpmnElement="F02">
+        <di:waypoint x="460" y="400" />
+        <di:waypoint x="560" y="400" />
+        <di:waypoint x="560" y="680" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F03_di" bpmnElement="F03">
+        <di:waypoint x="620" y="720" />
+        <di:waypoint x="675" y="720" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F04_di" bpmnElement="F04">
+        <di:waypoint x="700" y="695" />
+        <di:waypoint x="700" y="400" />
+        <di:waypoint x="775" y="400" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="706" y="520" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F05_di" bpmnElement="F05">
+        <di:waypoint x="725" y="720" />
+        <di:waypoint x="790" y="720" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="738" y="702" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F06_di" bpmnElement="F06">
+        <di:waypoint x="825" y="400" />
+        <di:waypoint x="880" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F07_di" bpmnElement="F07">
+        <di:waypoint x="1000" y="400" />
+        <di:waypoint x="1075" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F08_di" bpmnElement="F08">
+        <di:waypoint x="1125" y="400" />
+        <di:waypoint x="1180" y="400" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1143" y="389" width="14" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F09_di" bpmnElement="F09">
+        <di:waypoint x="1100" y="375" />
+        <di:waypoint x="1100" y="310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1106" y="335" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10_di" bpmnElement="F10">
+        <di:waypoint x="1160" y="270" />
+        <di:waypoint x="1212" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
+        <di:waypoint x="1460" y="400" />
+        <di:waypoint x="1500" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F13_di" bpmnElement="F13">
+        <di:waypoint x="1620" y="400" />
+        <di:waypoint x="1682" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F14_di" bpmnElement="F14">
+        <di:waypoint x="1718" y="400" />
+        <di:waypoint x="1775" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F15_di" bpmnElement="F15">
+        <di:waypoint x="1825" y="400" />
+        <di:waypoint x="1915" y="400" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1840" y="382" width="60" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F16_di" bpmnElement="F16">
+        <di:waypoint x="1800" y="375" />
+        <di:waypoint x="1800" y="310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1806" y="335" width="40" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F17_di" bpmnElement="F17">
+        <di:waypoint x="1800" y="425" />
+        <di:waypoint x="1800" y="590" />
+        <di:waypoint x="800" y="590" />
+        <di:waypoint x="800" y="425" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1148" y="536" width="164" height="48" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F18_di" bpmnElement="F18">
+        <di:waypoint x="1860" y="270" />
+        <di:waypoint x="1912" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F21_di" bpmnElement="F21">
+        <di:waypoint x="2320" y="720" />
+        <di:waypoint x="2395" y="720" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F23_di" bpmnElement="F23">
+        <di:waypoint x="2445" y="720" />
+        <di:waypoint x="2560" y="720" />
+        <di:waypoint x="2560" y="880" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2452" y="702" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F24_di" bpmnElement="F24">
+        <di:waypoint x="2620" y="920" />
+        <di:waypoint x="2720" y="920" />
+        <di:waypoint x="2720" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F25_di" bpmnElement="F25">
+        <di:waypoint x="2780" y="400" />
+        <di:waypoint x="2842" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F26_di" bpmnElement="F26">
+        <di:waypoint x="2878" y="400" />
+        <di:waypoint x="2935" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F27_di" bpmnElement="F27">
+        <di:waypoint x="2960" y="425" />
+        <di:waypoint x="2960" y="500" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2966" y="450" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F28_di" bpmnElement="F28">
+        <di:waypoint x="2985" y="400" />
+        <di:waypoint x="3060" y="400" />
+        <di:waypoint x="3060" y="920" />
+        <di:waypoint x="3100" y="920" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2992" y="382" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F29_di" bpmnElement="F29">
+        <di:waypoint x="2960" y="580" />
+        <di:waypoint x="2960" y="600" />
+        <di:waypoint x="2445" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F30_di" bpmnElement="F30">
+        <di:waypoint x="3220" y="920" />
+        <di:waypoint x="3340" y="920" />
+        <di:waypoint x="3340" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F31_di" bpmnElement="F31">
+        <di:waypoint x="3400" y="400" />
+        <di:waypoint x="3462" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F32_di" bpmnElement="F32">
+        <di:waypoint x="3498" y="400" />
+        <di:waypoint x="3570" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F33_di" bpmnElement="F33">
+        <di:waypoint x="3710" y="400" />
+        <di:waypoint x="3772" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cjmdw9_di" bpmnElement="Flow_0cjmdw9">
+        <di:waypoint x="2420" y="695" />
+        <di:waypoint x="2420" y="625" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2428" y="664" width="14" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03nsu3e_di" bpmnElement="Flow_03nsu3e">
+        <di:waypoint x="2395" y="600" />
+        <di:waypoint x="1940" y="600" />
+        <di:waypoint x="1940" y="425" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vl64x9_di" bpmnElement="Flow_0vl64x9">
+        <di:waypoint x="1300" y="400" />
+        <di:waypoint x="1340" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e6bdv4_di" bpmnElement="Flow_1e6bdv4">
+        <di:waypoint x="1965" y="400" />
+        <di:waypoint x="2020" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ltm3i2_di" bpmnElement="Flow_0ltm3i2">
+        <di:waypoint x="2140" y="400" />
+        <di:waypoint x="2260" y="400" />
+        <di:waypoint x="2260" y="680" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Out_Request_di" bpmnElement="Out_Request">
+        <di:waypoint x="400" y="440" />
+        <di:waypoint x="400" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="In_Request_di" bpmnElement="In_Request">
+        <di:waypoint x="418" y="490" />
+        <di:waypoint x="500" y="720" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Out_Offer_di" bpmnElement="Out_Offer">
+        <di:waypoint x="1400" y="440" />
+        <di:waypoint x="1400" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="In_Offer_di" bpmnElement="In_Offer">
+        <di:waypoint x="1418" y="490" />
+        <di:waypoint x="1540" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="In_Contract_di" bpmnElement="In_Contract">
+        <di:waypoint x="2098" y="500" />
+        <di:waypoint x="2200" y="720" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Out_Records_di" bpmnElement="Out_Records">
+        <di:waypoint x="3640" y="440" />
+        <di:waypoint x="3640" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF01_di" bpmnElement="MF01">
+        <di:waypoint x="260" y="130" />
+        <di:waypoint x="260" y="382" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="265" y="148" width="125" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF02_di" bpmnElement="MF02">
+        <di:waypoint x="1560" y="360" />
+        <di:waypoint x="1560" y="130" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1565" y="148" width="125" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF03_di" bpmnElement="MF03">
+        <di:waypoint x="1700" y="130" />
+        <di:waypoint x="1700" y="382" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1705" y="148" width="125" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF04_di" bpmnElement="MF04">
+        <di:waypoint x="1100" y="230" />
+        <di:waypoint x="1100" y="130" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1105" y="148" width="125" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF05_di" bpmnElement="MF05">
+        <di:waypoint x="2720" y="360" />
+        <di:waypoint x="2720" y="130" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2725" y="148" width="125" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF06_di" bpmnElement="MF06">
+        <di:waypoint x="2860" y="130" />
+        <di:waypoint x="2860" y="382" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2865" y="148" width="125" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF07_di" bpmnElement="MF07">
+        <di:waypoint x="3340" y="360" />
+        <di:waypoint x="3340" y="130" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3345" y="148" width="125" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF08_di" bpmnElement="MF08">
+        <di:waypoint x="3480" y="130" />
+        <di:waypoint x="3480" y="382" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3485" y="148" width="125" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_19lav4l_di" bpmnElement="DataOutputAssociation_19lav4l">
+        <di:waypoint x="2081" y="440" />
+        <di:waypoint x="2082" y="465" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
