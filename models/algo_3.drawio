@@ -1,0 +1,325 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="reserve-premise" name="Резервирование помещения">
+    <mxGraphModel dx="2020" dy="1102" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2940" pageHeight="3060" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rs" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=1;arcSize=50;" value="Начало" vertex="1">
+          <mxGeometry height="50" width="380" x="220" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ri" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=parallelogram;perimeter=parallelogramPerimeter;size=0.1;" value="Вход: application, premise, reservations,&lt;br&gt;contract_periods, now, new_id, hold_period" vertex="1">
+          <mxGeometry height="100" width="380" x="220" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="rinit" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=0;" value="start = application[&quot;rental_start_date&quot;]&lt;br&gt;end = application[&quot;rental_end_date&quot;]" vertex="1">
+          <mxGeometry height="85" width="380" x="220" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="rstatus" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="operational_status !=&lt;br&gt;PREMISE_AVAILABLE?" vertex="1">
+          <mxGeometry height="110" width="380" x="220" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="rdates" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="start &amp;gt; end?" vertex="1">
+          <mxGeometry height="100" width="380" x="220" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="rl1" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=hexagon;perimeter=hexagonPerimeter;size=0.1;" value="Перебор записей reservations" vertex="1">
+          <mxGeometry height="75" width="380" x="220" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="rn1" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="Есть следующий резерв?&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="380" x="220" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="rpid1" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="res[&quot;premise_id&quot;] !=&lt;br&gt;premise[&quot;id&quot;]?" vertex="1">
+          <mxGeometry height="110" width="380" x="220" y="1080" as="geometry" />
+        </mxCell>
+        <mxCell id="ractive" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=process;size=0.06;" value="active = is_reservation_active(res, now)" vertex="1">
+          <mxGeometry height="85" width="380" x="220" y="1240" as="geometry" />
+        </mxCell>
+        <mxCell id="ra" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="active?" vertex="1">
+          <mxGeometry height="100" width="380" x="220" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="rover1" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=process;size=0.06;" value="conflict = periods_overlap(start, end,&lt;br&gt;res[&quot;rental_start_date&quot;],&lt;br&gt;res[&quot;rental_end_date&quot;])" vertex="1">
+          <mxGeometry height="100" width="380" x="220" y="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="rc1" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="conflict?" vertex="1">
+          <mxGeometry height="100" width="380" x="220" y="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="rl2" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=hexagon;perimeter=hexagonPerimeter;size=0.1;" value="Перебор интервалов contract_periods" vertex="1">
+          <mxGeometry height="75" width="380" x="220" y="1820" as="geometry" />
+        </mxCell>
+        <mxCell id="rn2" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="Есть следующий интервал?&lt;br&gt;Если да — period" vertex="1">
+          <mxGeometry height="110" width="380" x="220" y="1940" as="geometry" />
+        </mxCell>
+        <mxCell id="rpid2" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="period[&quot;premise_id&quot;] !=&lt;br&gt;premise[&quot;id&quot;]?" vertex="1">
+          <mxGeometry height="110" width="380" x="220" y="2100" as="geometry" />
+        </mxCell>
+        <mxCell id="rover2" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=process;size=0.06;" value="conflict = periods_overlap(start, end,&lt;br&gt;period[&quot;start&quot;], period[&quot;end&quot;])" vertex="1">
+          <mxGeometry height="95" width="380" x="220" y="2260" as="geometry" />
+        </mxCell>
+        <mxCell id="rc2" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="conflict?" vertex="1">
+          <mxGeometry height="100" width="380" x="220" y="2400" as="geometry" />
+        </mxCell>
+        <mxCell id="rbuild" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=0;" value="Сформировать reservation" vertex="1">
+          <mxGeometry height="120" width="380" x="220" y="2580" as="geometry" />
+        </mxCell>
+        <mxCell id="rout" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=parallelogram;perimeter=parallelogramPerimeter;size=0.1;" value="Возврат: reservation" vertex="1">
+          <mxGeometry height="80" width="380" x="220" y="2780" as="geometry" />
+        </mxCell>
+        <mxCell id="rend" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=1;arcSize=50;" value="Конец" vertex="1">
+          <mxGeometry height="50" width="380" x="220" y="2910" as="geometry" />
+        </mxCell>
+        <mxCell id="errstatus" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=0;" value="raise ValueError(&lt;br&gt;&quot;помещение недоступно для сдачи&quot;)" vertex="1">
+          <mxGeometry height="100" width="350" x="720" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="errdate" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=0;" value="raise ValueError(&lt;br&gt;&quot;дата начала аренды позже даты окончания&quot;)" vertex="1">
+          <mxGeometry height="100" width="350" x="720" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="errreserve" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=0;" value="raise ValueError(&lt;br&gt;f&quot;конфликт с действующим резервом&lt;br&gt;(id={res[&#39;id&#39;]})&quot;)" vertex="1">
+          <mxGeometry height="100" width="350" x="720" y="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="errcontract" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=0;" value="raise ValueError(&lt;br&gt;&quot;конфликт с заключённым договором аренды&quot;)" vertex="1">
+          <mxGeometry height="100" width="350" x="720" y="2400" as="geometry" />
+        </mxCell>
+        <mxCell id="rex" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=1;arcSize=50;" value="Выход с исключением" vertex="1">
+          <mxGeometry height="60" width="280" x="820" y="2910" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_28" edge="1" parent="1" source="rs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="ri" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_29" edge="1" parent="1" source="ri" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rinit" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_30" edge="1" parent="1" source="rinit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rstatus" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_31" edge="1" parent="1" source="rl1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rn1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_32" edge="1" parent="1" source="ractive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="ra" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_33" edge="1" parent="1" source="rover1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rc1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_34" edge="1" parent="1" source="rl2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rn2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_35" edge="1" parent="1" source="rover2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rc2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_36" edge="1" parent="1" source="rbuild" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rout" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_37" edge="1" parent="1" source="rout" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rend" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_edge_38" edge="1" parent="1" source="rstatus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rdates" value="нет">
+          <mxGeometry relative="1" x="-0.6667" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_39" edge="1" parent="1" source="rstatus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="errstatus" value="да">
+          <mxGeometry relative="1" x="-0.5" y="25" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_40" edge="1" parent="1" source="rdates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rl1" value="нет">
+          <mxGeometry relative="1" x="-0.2" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_41" edge="1" parent="1" source="rdates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="errdate" value="да">
+          <mxGeometry relative="1" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_42" edge="1" parent="1" source="rn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rpid1" value="да">
+          <mxGeometry relative="1" x="-0.6" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_43" edge="1" parent="1" source="rn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="rl2" value="нет">
+          <mxGeometry relative="1" x="-0.9796" y="25" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="650" y="975" />
+              <mxPoint x="650" y="1857" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_44" edge="1" parent="1" source="rpid1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="ractive" value="нет">
+          <mxGeometry relative="1" x="-0.2" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_45" edge="1" parent="1" source="rpid1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" target="rn1" value="да">
+          <mxGeometry relative="1" x="-0.875" y="-15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="140" y="1135" />
+              <mxPoint x="140" y="975" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_46" edge="1" parent="1" source="ra" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rover1" value="да">
+          <mxGeometry relative="1" x="-0.2" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_47" edge="1" parent="1" source="ra" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" target="rn1" value="нет">
+          <mxGeometry relative="1" x="-0.969" y="-20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="120" y="1420" />
+              <mxPoint x="120" y="975" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_48" edge="1" parent="1" source="rc1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="errreserve" value="да">
+          <mxGeometry relative="1" x="-0.6667" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_49" edge="1" parent="1" source="rc1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" target="rn1" value="нет">
+          <mxGeometry relative="1" x="-0.9797" y="-20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="100" y="1720" />
+              <mxPoint x="100" y="975" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_50" edge="1" parent="1" source="rn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rpid2" value="да">
+          <mxGeometry relative="1" x="-0.2" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_51" edge="1" parent="1" source="rn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="rbuild" value="нет">
+          <mxGeometry relative="1" x="-0.9463" y="15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="650" y="1995" />
+              <mxPoint x="650" y="2640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_52" edge="1" parent="1" source="rpid2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="rover2" value="нет">
+          <mxGeometry relative="1" x="-0.2" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_53" edge="1" parent="1" source="rpid2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" target="rn2" value="да">
+          <mxGeometry relative="1" x="-0.9375" y="-15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="140" y="2155" />
+              <mxPoint x="140" y="1995" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_54" edge="1" parent="1" source="rc2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="errcontract" value="да">
+          <mxGeometry relative="1" x="-0.6667" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_55" edge="1" parent="1" source="rc2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" target="rn2" value="нет">
+          <mxGeometry relative="1" x="-0.9712" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="100" y="2450" />
+              <mxPoint x="100" y="1995" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_56" edge="1" parent="1" source="errstatus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="rex" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="535" />
+              <mxPoint x="1120" y="2940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_57" edge="1" parent="1" source="errdate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="rex" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="700" />
+              <mxPoint x="1120" y="2940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_58" edge="1" parent="1" source="errreserve" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="rex" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="1720" />
+              <mxPoint x="1120" y="2940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_edge_59" edge="1" parent="1" source="errcontract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="rex" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="2450" />
+              <mxPoint x="1120" y="2940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="as" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=1;arcSize=50;" value="&lt;span style=&quot;text-align: left;&quot;&gt;is_reservation_active()&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="380" x="1430" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ai" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=parallelogram;perimeter=parallelogramPerimeter;size=0.1;" value="Вход: reservation, now" vertex="1">
+          <mxGeometry height="75" width="380" x="1430" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="ast" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="status != RESERVATION_ACTIVE?" vertex="1">
+          <mxGeometry height="110" width="380" x="1430" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="aexp" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rhombus;perimeter=rhombusPerimeter;" value="expires_at ≤ now?" vertex="1">
+          <mxGeometry height="110" width="380" x="1430" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="atrue" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=parallelogram;perimeter=parallelogramPerimeter;size=0.1;" value="Возврат: True" vertex="1">
+          <mxGeometry height="75" width="380" x="1430" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="ae" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=1;arcSize=50;" value="Конец" vertex="1">
+          <mxGeometry height="50" width="380" x="1430" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="afalse" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;shape=parallelogram;perimeter=parallelogramPerimeter;size=0.1;" value="Возврат: False" vertex="1">
+          <mxGeometry height="75" width="300" x="1270" y="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="aef" parent="1" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.2;align=center;verticalAlign=middle;rounded=1;arcSize=50;" value="Конец" vertex="1">
+          <mxGeometry height="50" width="220" x="1310" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="helper_edge108" edge="1" parent="1" source="as" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="ai" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="helper_edge109" edge="1" parent="1" source="ai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="ast" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="helper_edge110" edge="1" parent="1" source="ast" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="aexp" value="нет">
+          <mxGeometry relative="1" x="-0.5556" y="20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="helper_edge111" edge="1" parent="1" source="aexp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="atrue" value="нет">
+          <mxGeometry relative="1" x="-0.7778" y="30" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="helper_edge112" edge="1" parent="1" source="atrue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="ae" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="helper_edge113" edge="1" parent="1" source="ast" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=0;exitY=0.5;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="afalse" value="да">
+          <mxGeometry relative="1" x="-0.9487" y="-15" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="helper_edge114" edge="1" parent="1" source="aexp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" target="afalse" value="да">
+          <mxGeometry relative="1" x="-0.9739" y="-15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1240" y="595" />
+              <mxPoint x="1240" y="1127" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="helper_edge115" edge="1" parent="1" source="afalse" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=15;labelBackgroundColor=#ffffff;strokeColor=#000000;" target="aef" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
