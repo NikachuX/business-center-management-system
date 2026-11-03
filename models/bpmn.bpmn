@@ -87,6 +87,11 @@
     <bpmn:task id="Task_SelectPremises" name="Подобрать свободные помещения">
       <bpmn:incoming>F06</bpmn:incoming>
       <bpmn:outgoing>F07</bpmn:outgoing>
+      <bpmn:property id="Property_0jakl1t" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_07ae6sf">
+        <bpmn:sourceRef>DataObjectReference_07yawiy</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0jakl1t</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
     </bpmn:task>
     <bpmn:exclusiveGateway id="Gw_PremisesFound" name="Есть подходящие помещения?">
       <bpmn:incoming>F07</bpmn:incoming>
@@ -242,6 +247,9 @@
     <bpmn:task id="Activity_06icvkw" name="Зарезервировать помещение">
       <bpmn:incoming>F08</bpmn:incoming>
       <bpmn:outgoing>Flow_0vl64x9</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0kbfzji">
+        <bpmn:targetRef>DataObjectReference_0c5qm92</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Activity_1i5kgd1" name="Подготовить проект договора">
       <bpmn:incoming>Flow_1e6bdv4</bpmn:incoming>
@@ -252,6 +260,10 @@
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1e6bdv4" sourceRef="Gw_MergeContract" targetRef="Activity_1i5kgd1" />
     <bpmn:sequenceFlow id="Flow_0ltm3i2" sourceRef="Activity_1i5kgd1" targetRef="Task_CheckContract" />
+    <bpmn:dataObjectReference id="DataObjectReference_07yawiy" name="Помещения" dataObjectRef="DataObject_1o18rqk" />
+    <bpmn:dataObject id="DataObject_1o18rqk" />
+    <bpmn:dataObjectReference id="DataObjectReference_0c5qm92" name="Резервирование" dataObjectRef="DataObject_1ecvk8i" />
+    <bpmn:dataObject id="DataObject_1ecvk8i" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_Lease">
@@ -419,6 +431,18 @@
         <dc:Bounds x="2020" y="360" width="120" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_07yawiy_di" bpmnElement="DataObjectReference_07yawiy">
+        <dc:Bounds x="912" y="255" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="901" y="234" width="59" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_0c5qm92_di" bpmnElement="DataObjectReference_0c5qm92">
+        <dc:Bounds x="1302" y="255" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1279" y="234" width="83" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="F01_di" bpmnElement="F01">
         <di:waypoint x="278" y="400" />
         <di:waypoint x="340" y="400" />
@@ -505,7 +529,7 @@
         <di:waypoint x="800" y="590" />
         <di:waypoint x="800" y="425" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1148" y="536" width="164" height="48" />
+          <dc:Bounds x="1149" y="536" width="164" height="48" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F18_di" bpmnElement="F18">
@@ -624,6 +648,10 @@
         <di:waypoint x="3640" y="440" />
         <di:waypoint x="3640" y="465" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_19lav4l_di" bpmnElement="DataOutputAssociation_19lav4l">
+        <di:waypoint x="2081" y="440" />
+        <di:waypoint x="2082" y="465" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MF01_di" bpmnElement="MF01">
         <di:waypoint x="260" y="130" />
         <di:waypoint x="260" y="382" />
@@ -680,9 +708,13 @@
           <dc:Bounds x="3485" y="148" width="125" height="28" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="DataOutputAssociation_19lav4l_di" bpmnElement="DataOutputAssociation_19lav4l">
-        <di:waypoint x="2081" y="440" />
-        <di:waypoint x="2082" y="465" />
+      <bpmndi:BPMNEdge id="DataInputAssociation_07ae6sf_di" bpmnElement="DataInputAssociation_07ae6sf">
+        <di:waypoint x="932" y="305" />
+        <di:waypoint x="937" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0kbfzji_di" bpmnElement="DataOutputAssociation_0kbfzji">
+        <di:waypoint x="1267" y="360" />
+        <di:waypoint x="1304" y="305" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

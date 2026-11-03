@@ -8,8 +8,6 @@ from update_premise_and_lease import update_premise_and_lease
 from utils import collect_busy_periods, next_id
 
 
-
-
 def replace_record(records, updated):
     for index, record in enumerate(records):
         if record['id'] == updated['id']:
@@ -67,7 +65,6 @@ def main():
     if not candidates:
         print('Подходящих помещений нет. Демонстрация завершена.')
         return
-    # Выбор менеджера в демонстрации: первый вариант ранжированного списка.
     selected_id = candidates[0]['premise_id']
     selected = next(p for p in premises if p['id'] == selected_id)
 
