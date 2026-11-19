@@ -1,0 +1,386 @@
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="classes-1" name="Диаграмма классов">
+    <mxGraphModel dx="2395" dy="1307" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2370" pageHeight="1477" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="TenantData" parent="1" style="swimlane;html=1;startSize=48;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="«record»&lt;br&gt;&lt;b&gt;TenantData&lt;/b&gt;" vertex="1">
+          <mxGeometry height="293" width="400" x="35" y="94" as="geometry" />
+        </mxCell>
+        <mxCell id="TenantData-fields" parent="TenantData" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;name:&amp;nbsp;String&lt;br&gt;-&amp;nbsp;inn:&amp;nbsp;String&lt;br&gt;-&amp;nbsp;contactPerson:&amp;nbsp;String&lt;br&gt;-&amp;nbsp;phone:&amp;nbsp;String&lt;br&gt;-&amp;nbsp;email:&amp;nbsp;String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="97" width="400" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="TenantData-methods" parent="TenantData" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;TenantData(name:&amp;nbsp;String,&amp;nbsp;inn:&amp;nbsp;String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;contactPerson:&amp;nbsp;String,&amp;nbsp;phone:&amp;nbsp;String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;email:&amp;nbsp;String)&lt;br&gt;+&amp;nbsp;name():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;inn():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;contactPerson():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;phone():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;email():&amp;nbsp;String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="148" width="400" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="Tenant" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;Tenant&lt;/b&gt;" vertex="1">
+          <mxGeometry height="158" width="317" x="496" y="94" as="geometry" />
+        </mxCell>
+        <mxCell id="Tenant-fields" parent="Tenant" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;id:&amp;nbsp;long&lt;br&gt;-&amp;nbsp;data:&amp;nbsp;TenantData&lt;/div&gt;" vertex="1">
+          <mxGeometry height="46" width="317" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="Tenant-methods" parent="Tenant" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;Tenant(id:&amp;nbsp;long,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;data:&amp;nbsp;TenantData)&lt;br&gt;+&amp;nbsp;id():&amp;nbsp;long&lt;br&gt;+&amp;nbsp;data():&amp;nbsp;TenantData&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="317" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="Application" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;Application&lt;/b&gt;" vertex="1">
+          <mxGeometry height="328" width="408" x="871" y="94" as="geometry" />
+        </mxCell>
+        <mxCell id="Application-fields" parent="Application" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;id:&amp;nbsp;long&lt;br&gt;-&amp;nbsp;tenant:&amp;nbsp;Tenant&lt;br&gt;-&amp;nbsp;createdAt:&amp;nbsp;LocalDateTime&lt;br&gt;-&amp;nbsp;requirements:&amp;nbsp;RentalRequest&lt;br&gt;-&amp;nbsp;status:&amp;nbsp;String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="97" width="408" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="Application-methods" parent="Application" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;Application(id:&amp;nbsp;long,&amp;nbsp;tenant:&amp;nbsp;Tenant,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;createdAt:&amp;nbsp;LocalDateTime,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;requirements:&amp;nbsp;RentalRequest)&lt;br&gt;+&amp;nbsp;id():&amp;nbsp;long&lt;br&gt;+&amp;nbsp;tenant():&amp;nbsp;Tenant&lt;br&gt;+&amp;nbsp;createdAt():&amp;nbsp;LocalDateTime&lt;br&gt;+&amp;nbsp;requirements():&amp;nbsp;RentalRequest&lt;br&gt;+&amp;nbsp;status():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;accepts(premise:&amp;nbsp;Premise):&amp;nbsp;boolean&lt;br&gt;+&amp;nbsp;matchesFloor(premise:&amp;nbsp;Premise):&amp;nbsp;boolean&lt;br&gt;+&amp;nbsp;markContractSigned():&amp;nbsp;void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="199" width="408" y="129" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalRequest" parent="1" style="swimlane;html=1;startSize=48;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="«record»&lt;br&gt;&lt;b&gt;RentalRequest&lt;/b&gt;" vertex="1">
+          <mxGeometry height="361" width="416" x="1344" y="94" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalRequest-fields" parent="RentalRequest" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;activityType:&amp;nbsp;String&lt;br&gt;-&amp;nbsp;minArea:&amp;nbsp;BigDecimal&lt;br&gt;-&amp;nbsp;maxArea:&amp;nbsp;BigDecimal&lt;br&gt;-&amp;nbsp;preferredFloor:&amp;nbsp;Integer&lt;br&gt;-&amp;nbsp;maxMonthlyBudget:&amp;nbsp;BigDecimal&lt;br&gt;-&amp;nbsp;period:&amp;nbsp;RentalPeriod&lt;/div&gt;" vertex="1">
+          <mxGeometry height="114" width="416" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalRequest-methods" parent="RentalRequest" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;RentalRequest(activityType:&amp;nbsp;String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;minArea:&amp;nbsp;BigDecimal,&amp;nbsp;maxArea:&amp;nbsp;BigDecimal,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;preferredFloor:&amp;nbsp;Integer,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;maxMonthlyBudget:&amp;nbsp;BigDecimal,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;period:&amp;nbsp;RentalPeriod)&lt;br&gt;+&amp;nbsp;activityType():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;minArea():&amp;nbsp;BigDecimal&lt;br&gt;+&amp;nbsp;maxArea():&amp;nbsp;BigDecimal&lt;br&gt;+&amp;nbsp;preferredFloor():&amp;nbsp;Integer&lt;br&gt;+&amp;nbsp;maxMonthlyBudget():&amp;nbsp;BigDecimal&lt;br&gt;+&amp;nbsp;period():&amp;nbsp;RentalPeriod&lt;/div&gt;" vertex="1">
+          <mxGeometry height="199" width="416" y="162" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalPeriod" parent="1" style="swimlane;html=1;startSize=48;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="«record»&lt;br&gt;&lt;b&gt;RentalPeriod&lt;/b&gt;" vertex="1">
+          <mxGeometry height="225" width="393" x="1823" y="94" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalPeriod-fields" parent="RentalPeriod" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;start:&amp;nbsp;LocalDate&lt;br&gt;-&amp;nbsp;end:&amp;nbsp;LocalDate&lt;/div&gt;" vertex="1">
+          <mxGeometry height="46" width="393" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalPeriod-methods" parent="RentalPeriod" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;RentalPeriod(start:&amp;nbsp;LocalDate,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;end:&amp;nbsp;LocalDate)&lt;br&gt;+&amp;nbsp;start():&amp;nbsp;LocalDate&lt;br&gt;+&amp;nbsp;end():&amp;nbsp;LocalDate&lt;br&gt;+&amp;nbsp;checkOrder():&amp;nbsp;void&lt;br&gt;+&amp;nbsp;overlaps(other:&amp;nbsp;RentalPeriod):&amp;nbsp;boolean&lt;br&gt;+&amp;nbsp;months():&amp;nbsp;long&lt;/div&gt;" vertex="1">
+          <mxGeometry height="131" width="393" y="94" as="geometry" />
+        </mxCell>
+        <mxCell id="Main" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;Main&lt;/b&gt;" vertex="1">
+          <mxGeometry height="141" width="455" x="64" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="Main-fields" parent="Main" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;TIMESTAMP:&amp;nbsp;DateTimeFormatter&amp;nbsp;{static}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="29" width="455" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="Main-methods" parent="Main" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;Main()&lt;br&gt;+&amp;nbsp;main(args:&amp;nbsp;String[]):&amp;nbsp;void&amp;nbsp;{static}&lt;br&gt;-&amp;nbsp;runDemo():&amp;nbsp;void&amp;nbsp;{static}&lt;br&gt;-&amp;nbsp;decimal(number:&amp;nbsp;long):&amp;nbsp;BigDecimal&amp;nbsp;{static}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="455" y="61" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalOffice" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;RentalOffice&lt;/b&gt;" vertex="1">
+          <mxGeometry height="668" width="515" x="35" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalOffice-fields" parent="RentalOffice" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;premises:&amp;nbsp;Map&amp;lt;Long,&amp;nbsp;Premise&amp;gt;&lt;br&gt;-&amp;nbsp;tenants:&amp;nbsp;List&amp;lt;Tenant&amp;gt;&lt;br&gt;-&amp;nbsp;applications:&amp;nbsp;Map&amp;lt;Long,&amp;nbsp;Application&amp;gt;&lt;br&gt;-&amp;nbsp;reservations:&amp;nbsp;List&amp;lt;Reservation&amp;gt;&lt;br&gt;-&amp;nbsp;offers:&amp;nbsp;Map&amp;lt;Long,&amp;nbsp;CommercialOffer&amp;gt;&lt;br&gt;-&amp;nbsp;contracts:&amp;nbsp;List&amp;lt;LeaseContract&amp;gt;&lt;br&gt;-&amp;nbsp;nextOfferItemId:&amp;nbsp;long&lt;/div&gt;" vertex="1">
+          <mxGeometry height="131" width="515" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="RentalOffice-methods" parent="RentalOffice" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;RentalOffice(premises:&amp;nbsp;List&amp;lt;Premise&amp;gt;)&lt;br&gt;+&amp;nbsp;registerApplication(data:&amp;nbsp;TenantData,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;request:&amp;nbsp;RentalRequest,&amp;nbsp;now:&amp;nbsp;LocalDateTime&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;):&amp;nbsp;Application&lt;br&gt;+&amp;nbsp;findAvailablePremises(application:&amp;nbsp;Application,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;now:&amp;nbsp;LocalDateTime):&amp;nbsp;List&amp;lt;Candidate&amp;gt;&lt;br&gt;+&amp;nbsp;reservePremise(application:&amp;nbsp;Application,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;premise:&amp;nbsp;Premise,&amp;nbsp;now:&amp;nbsp;LocalDateTime,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;holdPeriod:&amp;nbsp;Duration):&amp;nbsp;Reservation&lt;br&gt;+&amp;nbsp;generateCommercialOffer(application:&amp;nbsp;Application,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;selected:&amp;nbsp;List&amp;lt;Premise&amp;gt;,&amp;nbsp;now:&amp;nbsp;LocalDateTime,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;validDays:&amp;nbsp;int,&amp;nbsp;policy:&amp;nbsp;RatePolicy):&amp;nbsp;CommercialOffer&lt;br&gt;+&amp;nbsp;prepareContract(item:&amp;nbsp;OfferItem,&amp;nbsp;number:&amp;nbsp;String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;now:&amp;nbsp;LocalDateTime):&amp;nbsp;LeaseContract&lt;br&gt;+&amp;nbsp;updatePremiseAndLease(contract:&amp;nbsp;LeaseContract,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;now:&amp;nbsp;LocalDateTime):&amp;nbsp;LeaseContract&lt;br&gt;+&amp;nbsp;tenants():&amp;nbsp;List&amp;lt;Tenant&amp;gt;&lt;br&gt;+&amp;nbsp;applications():&amp;nbsp;List&amp;lt;Application&amp;gt;&lt;br&gt;+&amp;nbsp;reservations():&amp;nbsp;List&amp;lt;Reservation&amp;gt;&lt;br&gt;+&amp;nbsp;offers():&amp;nbsp;List&amp;lt;CommercialOffer&amp;gt;&lt;br&gt;+&amp;nbsp;contracts():&amp;nbsp;List&amp;lt;LeaseContract&amp;gt;&lt;br&gt;-&amp;nbsp;requireRegistered(application:&amp;nbsp;Application):&amp;nbsp;void&lt;br&gt;-&amp;nbsp;requireKnownPremise(premise:&amp;nbsp;Premise):&amp;nbsp;void&lt;br&gt;-&amp;nbsp;validateRegistration(data:&amp;nbsp;TenantData,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;request:&amp;nbsp;RentalRequest):&amp;nbsp;void&amp;nbsp;{static}&lt;br&gt;-&amp;nbsp;requireField(errors:&amp;nbsp;List&amp;lt;String&amp;gt;,&amp;nbsp;value:&amp;nbsp;Object,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;label:&amp;nbsp;String,&amp;nbsp;field:&amp;nbsp;String):&amp;nbsp;void&amp;nbsp;{static}&lt;br&gt;-&amp;nbsp;requirePositive(errors:&amp;nbsp;List&amp;lt;String&amp;gt;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;value:&amp;nbsp;BigDecimal,&amp;nbsp;field:&amp;nbsp;String):&amp;nbsp;void&amp;nbsp;{static}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="505" width="515" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="CommercialOffer" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;CommercialOffer&lt;/b&gt;" vertex="1">
+          <mxGeometry height="379" width="374" x="625" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="CommercialOffer-fields" parent="CommercialOffer" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;id:&amp;nbsp;long&lt;br&gt;-&amp;nbsp;application:&amp;nbsp;Application&lt;br&gt;-&amp;nbsp;createdAt:&amp;nbsp;LocalDateTime&lt;br&gt;-&amp;nbsp;validUntil:&amp;nbsp;LocalDateTime&lt;br&gt;-&amp;nbsp;status:&amp;nbsp;String&lt;br&gt;-&amp;nbsp;items:&amp;nbsp;List&amp;lt;OfferItem&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="114" width="374" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="CommercialOffer-methods" parent="CommercialOffer" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;~&amp;nbsp;CommercialOffer(id:&amp;nbsp;long,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;application:&amp;nbsp;Application,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;createdAt:&amp;nbsp;LocalDateTime,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;validDays:&amp;nbsp;int,&amp;nbsp;firstItemId:&amp;nbsp;long,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;selected:&amp;nbsp;List&amp;lt;Premise&amp;gt;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;rates:&amp;nbsp;Map&amp;lt;Long,&amp;nbsp;BigDecimal&amp;gt;)&lt;br&gt;+&amp;nbsp;id():&amp;nbsp;long&lt;br&gt;+&amp;nbsp;application():&amp;nbsp;Application&lt;br&gt;+&amp;nbsp;createdAt():&amp;nbsp;LocalDateTime&lt;br&gt;+&amp;nbsp;validUntil():&amp;nbsp;LocalDateTime&lt;br&gt;+&amp;nbsp;status():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;items():&amp;nbsp;List&amp;lt;OfferItem&amp;gt;&lt;br&gt;+&amp;nbsp;totalCost():&amp;nbsp;BigDecimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="233" width="374" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="OfferItem" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;OfferItem&lt;/b&gt;" vertex="1">
+          <mxGeometry height="345" width="374" x="625" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="OfferItem-fields" parent="OfferItem" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;id:&amp;nbsp;long&lt;br&gt;-&amp;nbsp;offer:&amp;nbsp;CommercialOffer&lt;br&gt;-&amp;nbsp;premise:&amp;nbsp;Premise&lt;br&gt;-&amp;nbsp;monthlyRate:&amp;nbsp;BigDecimal&lt;br&gt;-&amp;nbsp;period:&amp;nbsp;RentalPeriod&lt;/div&gt;" vertex="1">
+          <mxGeometry height="97" width="374" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="OfferItem-methods" parent="OfferItem" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;~&amp;nbsp;OfferItem(id:&amp;nbsp;long,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;offer:&amp;nbsp;CommercialOffer,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;premise:&amp;nbsp;Premise,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;monthlyRate:&amp;nbsp;BigDecimal)&lt;br&gt;+&amp;nbsp;id():&amp;nbsp;long&lt;br&gt;+&amp;nbsp;offer():&amp;nbsp;CommercialOffer&lt;br&gt;+&amp;nbsp;premise():&amp;nbsp;Premise&lt;br&gt;+&amp;nbsp;monthlyRate():&amp;nbsp;BigDecimal&lt;br&gt;+&amp;nbsp;period():&amp;nbsp;RentalPeriod&lt;br&gt;+&amp;nbsp;monthlyCost():&amp;nbsp;BigDecimal&lt;br&gt;+&amp;nbsp;months():&amp;nbsp;long&lt;br&gt;+&amp;nbsp;totalCost():&amp;nbsp;BigDecimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="216" width="374" y="129" as="geometry" />
+        </mxCell>
+        <mxCell id="Premise" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;Premise&lt;/b&gt;" vertex="1">
+          <mxGeometry height="362" width="365" x="1059" y="559" as="geometry" />
+        </mxCell>
+        <mxCell id="Premise-fields" parent="Premise" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;id:&amp;nbsp;long&lt;br&gt;-&amp;nbsp;number:&amp;nbsp;String&lt;br&gt;-&amp;nbsp;floor:&amp;nbsp;int&lt;br&gt;-&amp;nbsp;area:&amp;nbsp;BigDecimal&lt;br&gt;-&amp;nbsp;baseMonthlyRate:&amp;nbsp;BigDecimal&lt;br&gt;-&amp;nbsp;operationalStatus:&amp;nbsp;String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="114" width="365" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="Premise-methods" parent="Premise" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;Premise(id:&amp;nbsp;long,&amp;nbsp;number:&amp;nbsp;String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;floor:&amp;nbsp;int,&amp;nbsp;area:&amp;nbsp;BigDecimal,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;baseMonthlyRate:&amp;nbsp;BigDecimal,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;operationalStatus:&amp;nbsp;String)&lt;br&gt;+&amp;nbsp;id():&amp;nbsp;long&lt;br&gt;+&amp;nbsp;number():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;floor():&amp;nbsp;int&lt;br&gt;+&amp;nbsp;area():&amp;nbsp;BigDecimal&lt;br&gt;+&amp;nbsp;baseMonthlyRate():&amp;nbsp;BigDecimal&lt;br&gt;+&amp;nbsp;isAvailable():&amp;nbsp;boolean&lt;br&gt;+&amp;nbsp;monthlyCost(rate:&amp;nbsp;BigDecimal&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;):&amp;nbsp;BigDecimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="216" width="365" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="Candidate" parent="1" style="swimlane;html=1;startSize=48;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="«record»&lt;br&gt;&lt;b&gt;Candidate&lt;/b&gt;" vertex="1">
+          <mxGeometry height="225" width="365" x="1059" y="965" as="geometry" />
+        </mxCell>
+        <mxCell id="Candidate-fields" parent="Candidate" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;premise:&amp;nbsp;Premise&lt;br&gt;-&amp;nbsp;monthlyCost:&amp;nbsp;BigDecimal&lt;br&gt;-&amp;nbsp;floorMatch:&amp;nbsp;boolean&lt;/div&gt;" vertex="1">
+          <mxGeometry height="63" width="365" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="Candidate-methods" parent="Candidate" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;Candidate(premise:&amp;nbsp;Premise,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;monthlyCost:&amp;nbsp;BigDecimal,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;floorMatch:&amp;nbsp;boolean)&lt;br&gt;+&amp;nbsp;premise():&amp;nbsp;Premise&lt;br&gt;+&amp;nbsp;monthlyCost():&amp;nbsp;BigDecimal&lt;br&gt;+&amp;nbsp;floorMatch():&amp;nbsp;boolean&lt;/div&gt;" vertex="1">
+          <mxGeometry height="114" width="365" y="111" as="geometry" />
+        </mxCell>
+        <mxCell id="Reservation" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;Reservation&lt;/b&gt;" vertex="1">
+          <mxGeometry height="430" width="406" x="1491" y="559" as="geometry" />
+        </mxCell>
+        <mxCell id="Reservation-fields" parent="Reservation" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;id:&amp;nbsp;long&lt;br&gt;-&amp;nbsp;application:&amp;nbsp;Application&lt;br&gt;-&amp;nbsp;premise:&amp;nbsp;Premise&lt;br&gt;-&amp;nbsp;createdAt:&amp;nbsp;LocalDateTime&lt;br&gt;-&amp;nbsp;period:&amp;nbsp;RentalPeriod&lt;br&gt;-&amp;nbsp;expiresAt:&amp;nbsp;LocalDateTime&lt;br&gt;-&amp;nbsp;status:&amp;nbsp;String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="131" width="406" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="Reservation-methods" parent="Reservation" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;Reservation(id:&amp;nbsp;long,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;application:&amp;nbsp;Application,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;premise:&amp;nbsp;Premise,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;createdAt:&amp;nbsp;LocalDateTime,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;holdPeriod:&amp;nbsp;Duration)&lt;br&gt;+&amp;nbsp;id():&amp;nbsp;long&lt;br&gt;+&amp;nbsp;application():&amp;nbsp;Application&lt;br&gt;+&amp;nbsp;createdAt():&amp;nbsp;LocalDateTime&lt;br&gt;+&amp;nbsp;expiresAt():&amp;nbsp;LocalDateTime&lt;br&gt;+&amp;nbsp;status():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;premise():&amp;nbsp;Premise&lt;br&gt;+&amp;nbsp;period():&amp;nbsp;RentalPeriod&lt;br&gt;#&amp;nbsp;blocksAt(now:&amp;nbsp;LocalDateTime):&amp;nbsp;boolean&lt;br&gt;+&amp;nbsp;finishAfterSigning(contract:&amp;nbsp;LeaseContract&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;):&amp;nbsp;void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="267" width="406" y="163" as="geometry" />
+        </mxCell>
+        <mxCell id="LeaseContract" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;LeaseContract&lt;/b&gt;" vertex="1">
+          <mxGeometry height="379" width="406" x="1491" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="LeaseContract-fields" parent="LeaseContract" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;id:&amp;nbsp;long&lt;br&gt;-&amp;nbsp;item:&amp;nbsp;OfferItem&lt;br&gt;-&amp;nbsp;number:&amp;nbsp;String&lt;br&gt;-&amp;nbsp;createdAt:&amp;nbsp;LocalDateTime&lt;br&gt;-&amp;nbsp;signedAt:&amp;nbsp;LocalDateTime&lt;br&gt;-&amp;nbsp;status:&amp;nbsp;String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="114" width="406" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="LeaseContract-methods" parent="LeaseContract" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;LeaseContract(id:&amp;nbsp;long,&amp;nbsp;item:&amp;nbsp;OfferItem,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;number:&amp;nbsp;String,&amp;nbsp;createdAt:&amp;nbsp;LocalDateTime&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;)&lt;br&gt;+&amp;nbsp;id():&amp;nbsp;long&lt;br&gt;+&amp;nbsp;item():&amp;nbsp;OfferItem&lt;br&gt;+&amp;nbsp;number():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;createdAt():&amp;nbsp;LocalDateTime&lt;br&gt;+&amp;nbsp;signedAt():&amp;nbsp;LocalDateTime&lt;br&gt;+&amp;nbsp;status():&amp;nbsp;String&lt;br&gt;+&amp;nbsp;premise():&amp;nbsp;Premise&lt;br&gt;+&amp;nbsp;period():&amp;nbsp;RentalPeriod&lt;br&gt;#&amp;nbsp;blocksAt(now:&amp;nbsp;LocalDateTime):&amp;nbsp;boolean&lt;br&gt;+&amp;nbsp;sign(now:&amp;nbsp;LocalDateTime):&amp;nbsp;void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="233" width="406" y="146" as="geometry" />
+        </mxCell>
+        <mxCell id="Occupancy" parent="1" style="swimlane;html=1;startSize=48;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="«abstract»&lt;br&gt;&lt;b&gt;&lt;i&gt;Occupancy&lt;/i&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="162" width="390" x="1948" y="559" as="geometry" />
+        </mxCell>
+        <mxCell id="Occupancy-methods" parent="Occupancy" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;premise():&amp;nbsp;Premise&amp;nbsp;{abstract}&lt;br&gt;+&amp;nbsp;period():&amp;nbsp;RentalPeriod&amp;nbsp;{abstract}&lt;br&gt;#&amp;nbsp;blocksAt(now:&amp;nbsp;LocalDateTime&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;):&amp;nbsp;boolean&amp;nbsp;{abstract}&lt;br&gt;+&amp;nbsp;overlaps(otherPremise:&amp;nbsp;Premise,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;otherPeriod:&amp;nbsp;RentalPeriod):&amp;nbsp;boolean&lt;/div&gt;" vertex="1">
+          <mxGeometry height="114" width="390" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="BaseRatePolicy" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;BaseRatePolicy&lt;/b&gt;" vertex="1">
+          <mxGeometry height="95" width="390" x="1948" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="BaseRatePolicy-methods" parent="BaseRatePolicy" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;BaseRatePolicy()&lt;br&gt;+&amp;nbsp;monthlyRate(premise:&amp;nbsp;Premise&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;):&amp;nbsp;BigDecimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="63" width="390" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="RatePolicy" parent="1" style="swimlane;html=1;startSize=48;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="«interface»&lt;br&gt;&lt;b&gt;RatePolicy&lt;/b&gt;" vertex="1">
+          <mxGeometry height="94" width="390" x="1948" y="956" as="geometry" />
+        </mxCell>
+        <mxCell id="RatePolicy-methods" parent="RatePolicy" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;monthlyRate(premise:&amp;nbsp;Premise&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;):&amp;nbsp;BigDecimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="46" width="390" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ProposedRatePolicy" parent="1" style="swimlane;html=1;startSize=32;rounded=0;horizontal=1;strokeWidth=1.5;strokeColor=#50718d;fillColor=#e8eff6;swimlaneFillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=16;collapsible=0;recursiveResize=0;" value="&lt;b&gt;ProposedRatePolicy&lt;/b&gt;" vertex="1">
+          <mxGeometry height="141" width="390" x="1948" y="1160" as="geometry" />
+        </mxCell>
+        <mxCell id="ProposedRatePolicy-fields" parent="ProposedRatePolicy" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;-&amp;nbsp;rates:&amp;nbsp;Map&amp;lt;Long,&amp;nbsp;BigDecimal&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="29" width="390" y="32" as="geometry" />
+        </mxCell>
+        <mxCell id="ProposedRatePolicy-methods" parent="ProposedRatePolicy" style="rectangle;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;strokeColor=#50718d;strokeWidth=1;fillColor=#ffffff;fontColor=#172838;fontFamily=DejaVu Sans Mono;fontSize=14;spacingLeft=9;resizable=0;movable=0;" value="&lt;div style=&quot;line-height:17px; white-space:pre;&quot;&gt;+&amp;nbsp;ProposedRatePolicy(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;rates:&amp;nbsp;Map&amp;lt;Long,&amp;nbsp;BigDecimal&amp;gt;)&lt;br&gt;+&amp;nbsp;monthlyRate(premise:&amp;nbsp;Premise&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;):&amp;nbsp;BigDecimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="390" y="61" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="TenantData" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.238908;exitPerimeter=0;entryX=0.000000;entryY=0.443038;entryPerimeter=0;startArrow=none;endArrow=none;" target="Tenant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="439" y="141" as="geometry" />
+        </mxCell>
+        <mxCell id="e0-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="477" y="141" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="Tenant" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.443038;exitPerimeter=0;entryX=0.000000;entryY=0.213415;entryPerimeter=0;startArrow=none;endArrow=none;" target="Application">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="816" y="141" as="geometry" />
+        </mxCell>
+        <mxCell id="e1-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="834" y="167" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="Application" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.213415;exitPerimeter=0;entryX=0.000000;entryY=0.193906;entryPerimeter=0;startArrow=none;endArrow=none;" target="RentalRequest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1282" y="141" as="geometry" />
+        </mxCell>
+        <mxCell id="e2-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="1326" y="167" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="RentalRequest" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.193906;exitPerimeter=0;entryX=0.000000;entryY=0.311111;entryPerimeter=0;startArrow=none;endArrow=none;" target="RentalPeriod">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1763" y="141" as="geometry" />
+        </mxCell>
+        <mxCell id="e3-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="1805" y="167" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="Application" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.259804;exitY=1.000000;exitPerimeter=0;entryX=0.475936;entryY=0.000000;entryPerimeter=0;startArrow=none;endArrow=none;" target="CommercialOffer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="977" y="448" />
+              <mxPoint x="803" y="448" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="984" y="426" as="geometry" />
+        </mxCell>
+        <mxCell id="e4-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="765" y="472" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="Application" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.821078;exitY=1.000000;exitPerimeter=0;entryX=0.443350;entryY=0.000000;entryPerimeter=0;startArrow=none;endArrow=none;" target="Reservation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1206" y="472" />
+              <mxPoint x="1671" y="472" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="1212" y="428" as="geometry" />
+        </mxCell>
+        <mxCell id="e5-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1679" y="534" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="CommercialOffer" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.449198;exitY=1.000000;exitPerimeter=0;entryX=0.449198;entryY=0.000000;entryPerimeter=0;startArrow=diamond;startFill=1;startSize=15;endArrow=none;" target="OfferItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="801" y="908" as="geometry" />
+        </mxCell>
+        <mxCell id="e6-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1..*" vertex="1">
+          <mxGeometry height="19" width="38" x="801" y="947" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="Reservation" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.000000;exitY=0.176744;exitPerimeter=0;entryX=1.000000;entryY=0.209945;entryPerimeter=0;startArrow=none;endArrow=none;" target="Premise">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1454" y="612" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="1427" y="638" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="OfferItem" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.144928;exitPerimeter=0;entryX=0.000000;entryY=0.823204;entryPerimeter=0;startArrow=none;endArrow=none;" target="Premise">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1028" y="1020" />
+              <mxPoint x="1028" y="857" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1001" y="1024" as="geometry" />
+        </mxCell>
+        <mxCell id="e8-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="1037" y="834" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="OfferItem" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.747826;exitPerimeter=0;entryX=0.000000;entryY=0.469657;entryPerimeter=0;startArrow=none;endArrow=none;" target="LeaseContract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="1005" y="1205" as="geometry" />
+        </mxCell>
+        <mxCell id="e9-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..1" vertex="1">
+          <mxGeometry height="19" width="38" x="1447" y="1205" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="Candidate" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.487671;exitY=0.000000;exitPerimeter=0;entryX=0.487671;entryY=1.000000;entryPerimeter=0;startArrow=none;endArrow=none;" target="Premise">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1245" y="944" as="geometry" />
+        </mxCell>
+        <mxCell id="e10-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="1245" y="924" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="Reservation" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.111628;exitPerimeter=0;entryX=0.000000;entryY=0.296296;entryPerimeter=0;endArrow=block;endFill=0;endSize=15;" target="Occupancy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="LeaseContract" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.158311;exitPerimeter=0;entryX=0.000000;entryY=0.728395;entryPerimeter=0;endArrow=block;endFill=0;endSize=15;" target="Occupancy">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1922" y="1110" />
+              <mxPoint x="1922" y="677" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="BaseRatePolicy" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.500000;exitY=1.000000;exitPerimeter=0;entryX=0.500000;entryY=0.000000;entryPerimeter=0;dashed=1;endArrow=block;endFill=0;endSize=15;" target="RatePolicy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="ProposedRatePolicy" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.500000;exitY=0.000000;exitPerimeter=0;entryX=0.500000;entryY=1.000000;entryPerimeter=0;dashed=1;endArrow=block;endFill=0;endSize=15;" target="RatePolicy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="Main" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.496703;exitY=1.000000;exitPerimeter=0;entryX=0.495146;entryY=0.000000;entryPerimeter=0;dashed=1;endArrow=open;endFill=0;endSize=11;" target="RentalOffice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="RentalOffice" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.010479;exitPerimeter=0;entryX=0.000000;entryY=0.772152;entryPerimeter=0;startArrow=diamond;startFill=0;startSize=15;endArrow=none;" target="Tenant">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="566" y="647" />
+              <mxPoint x="566" y="617" />
+              <mxPoint x="536" y="617" />
+              <mxPoint x="536" y="409" />
+              <mxPoint x="463" y="409" />
+              <mxPoint x="463" y="216" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e16-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="550" y="624" as="geometry" />
+        </mxCell>
+        <mxCell id="e16-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="461" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="RentalOffice" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.049401;exitPerimeter=0;entryX=0.000000;entryY=0.606707;entryPerimeter=0;startArrow=diamond;startFill=0;startSize=15;endArrow=none;" target="Application">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="585" y="673" />
+              <mxPoint x="585" y="293" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="550" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="e17-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="834" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="RentalOffice" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.092814;exitPerimeter=0;entryX=0.108374;entryY=0.000000;entryPerimeter=0;startArrow=diamond;startFill=0;startSize=15;endArrow=none;" target="Reservation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="602" y="702" />
+              <mxPoint x="602" y="493" />
+              <mxPoint x="1535" y="493" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="550" y="679" as="geometry" />
+        </mxCell>
+        <mxCell id="e18-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1543" y="534" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" source="RentalOffice" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.133234;exitPerimeter=0;entryX=0.205479;entryY=0.000000;entryPerimeter=0;startArrow=diamond;startFill=0;startSize=15;endArrow=none;" target="Premise">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="613" y="729" />
+              <mxPoint x="613" y="506" />
+              <mxPoint x="1134" y="506" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e19-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="550" y="706" as="geometry" />
+        </mxCell>
+        <mxCell id="e19-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1141" y="534" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" edge="1" parent="1" source="RentalOffice" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.178144;exitPerimeter=0;entryX=0.000000;entryY=0.630607;entryPerimeter=0;startArrow=diamond;startFill=0;startSize=15;endArrow=none;" target="CommercialOffer">
+          <mxGeometry relative="1" x="0.0139" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e20-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="550" y="736" as="geometry" />
+        </mxCell>
+        <mxCell id="e20-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="588" y="736" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" edge="1" parent="1" source="RentalOffice" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=1.000000;exitY=0.929641;exitPerimeter=0;entryX=0.000000;entryY=0.796834;entryPerimeter=0;startArrow=diamond;startFill=0;startSize=15;endArrow=none;" target="LeaseContract">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="579" y="1261" />
+              <mxPoint x="579" y="1352" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e21-label0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="1" vertex="1">
+          <mxGeometry height="19" width="17" x="550" y="1238" as="geometry" />
+        </mxCell>
+        <mxCell id="e21-label1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#172838;fontFamily=DejaVu Sans;fontSize=13;" value="0..*" vertex="1">
+          <mxGeometry height="19" width="38" x="1454" y="1329" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" edge="1" parent="1" source="RentalOffice" style="html=1;rounded=0;strokeColor=#355875;strokeWidth=1.6;exitX=0.497087;exitY=1.000000;exitPerimeter=0;entryX=1.000000;entryY=0.436170;entryPerimeter=0;dashed=1;endArrow=open;endFill=0;endSize=11;" target="RatePolicy">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="291" y="1446" />
+              <mxPoint x="2351" y="1446" />
+              <mxPoint x="2351" y="997" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
