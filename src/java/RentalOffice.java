@@ -78,6 +78,9 @@ public final class RentalOffice {
                                       Duration holdPeriod) {
         requireRegistered(application);
         requireKnownPremise(premise);
+        if (holdPeriod.isZero() || holdPeriod.isNegative()) {
+            throw new IllegalArgumentException("срок действия резерва должен быть положительным");
+        }
         if (!premise.isAvailable()) {
             throw new IllegalArgumentException("помещение недоступно для сдачи");
         }
