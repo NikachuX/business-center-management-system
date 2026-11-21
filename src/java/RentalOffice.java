@@ -148,6 +148,12 @@ public final class RentalOffice {
         if (!contracts.contains(contract)) {
             throw new IllegalArgumentException("нарушена цепочка связей договора");
         }
+        for (LeaseContract existing : contracts) {
+            if (existing != contract && existing.blocksAt(now)
+                    && existing.overlaps(contract.premise(), contract.period())) {
+                throw new IllegalArgumentException("конфликт с заключённым договором аренды");
+            }
+        }
         contract.sign(now);
         contract.item().offer().application().markContractSigned();
         for (Reservation reservation : reservations) {
