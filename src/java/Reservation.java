@@ -38,7 +38,9 @@ public final class Reservation extends Occupancy {
     }
 
     public void finishAfterSigning(LeaseContract contract) {
-        if (application == contract.item().offer().application() && "active".equals(status)) {
+        LocalDateTime signedAt = contract.signedAt();
+        if (signedAt != null && application == contract.item().offer().application()
+                && blocksAt(signedAt)) {
             status = premise.id() == contract.premise().id() ? "converted" : "cancelled";
         }
     }
