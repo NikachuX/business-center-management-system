@@ -16,7 +16,23 @@ Python 3.10 или новее. Проверено на Python 3.14.3. Испол
 
 ## Как запустить
 
-Распакуйте архив и откройте терминал в папке src:
+Распакуйте архив и откройте терминал в корне проекта — в папке, где находятся `README.md` и `src`. Все команды ниже выполняются из этой папки.
+
+### Python
 
 ```bash
-python src/main.py
+python src/python/main.py
+```
+
+### Java
+
+Нужен **JDK 21 или новее** с командами `javac` и `java`. Сторонние библиотеки не требуются.
+
+**Windows PowerShell**
+
+```powershell
+New-Item -ItemType Directory -Force out | Out-Null
+$files = Get-ChildItem -Path .\src\java -File -Filter '*.java' | ForEach-Object { $_.FullName }
+javac -encoding UTF-8 -d out $files
+java -cp out Main
+```
